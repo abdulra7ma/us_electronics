@@ -9,4 +9,5 @@ class SensorAPIView(CreateAPIView):
 
 class SensorListAPIView(ListAPIView):
     serializer_class = SensorSerializer
-    queryset = SensorSerializer.Meta.model.objects.all()
+    queryset = SensorSerializer.Meta.model.objects.all()[:50]
+
