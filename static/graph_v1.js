@@ -15,7 +15,7 @@ function updateChart() {
       const chartData = {
         labels: labels,
         datasets: [{
-          label: '# of Votes',
+          label: '# of Data',
           data: values,
           borderWidth: 1
         }]

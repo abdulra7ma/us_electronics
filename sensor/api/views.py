@@ -1,6 +1,7 @@
 from rest_framework.generics import CreateAPIView, ListAPIView
 
 from sensor.api.serializers import SensorSerializer
+from sensor.models import Sensor
 
 
 class SensorAPIView(CreateAPIView):
@@ -9,5 +10,6 @@ class SensorAPIView(CreateAPIView):
 
 class SensorListAPIView(ListAPIView):
     serializer_class = SensorSerializer
-    queryset = SensorSerializer.Meta.model.objects.all()[:50]
+    # latest 100 sensors data added to the database
+    queryset = Sensor.objects.all().order_by('-end_time')[:100]
 
