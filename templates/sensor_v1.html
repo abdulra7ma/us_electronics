@@ -1,0 +1,61 @@
+<!-- Include the AmCharts library -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Create a div for the chart to be rendered in -->
+<div id="chartdiv"></div>
+
+<script>
+// Define the chart data
+var chartData = [{
+  "date": "2023-05-01T10:21:32Z",
+  "distance": 100
+}, {
+  "date": "2023-05-01T10:27:34Z",
+  "distance": 90
+}];
+
+// Create the chart
+var chart = am4core.create("chartdiv", am4charts.XYChart);
+chart.paddingRight = 20;
+
+// Add X and Y axes
+var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+dateAxis.dataFields.category = "date";
+dateAxis.renderer.grid.template.location = 0;
+dateAxis.renderer.minGridDistance = 30;
+dateAxis.baseInterval = {
+  timeUnit: "second",
+  count: 1
+};
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+// Add the distance series
+var series = chart.series.push(new am4charts.LineSeries());
+series.dataFields.valueY = "distance";
+series.dataFields.dateX = "date";
+series.strokeWidth = 2;
+series.minBulletDistance = 10;
+series.tooltipText = "{valueY}";
+
+// Add a scrollbar
+chart.scrollbarX = new am4core.Scrollbar();
+
+// Apply the animated theme
+chart.colors.list = [am4core.color("#67b7dc")];
+chart.cursor = new am4charts.XYCursor();
+chart.cursor.lineX.strokeWidth = 0;
+chart.cursor.lineY.strokeWidth = 0;
+chart.cursor.lineX.strokeOpacity = 0;
+chart.cursor.lineY.strokeOpacity = 0;
+chart.cursor.behavior = "none";
+chart.cursor.xAxis = dateAxis;
+chart.cursor.fullWidthLineX = true;
+chart.cursor.lineX.strokeOpacity = 0.1;
+chart.cursor.lineX.stroke = am4core.color("#000000");
+chart.cursor.lineX.strokeWidth = 2;
+
+chart.data = chartData;
+</script>

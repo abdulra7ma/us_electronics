@@ -1,0 +1,32 @@
+{% load static %}
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'graph_v1.js' %}"></script>
+
+{#<script>#}
+{#  const ctx = document.getElementById('myChart');#}
+{##}
+{#  const data =#}
+{##}
+{#  new Chart(ctx, {#}
+{#    type: 'line',#}
+{#    data: {#}
+{#      labels: ['2023-05-01T10:27:34Z', '2023-05-01T10:21:32Z', 'Yellow', 'Green', 'Purple', 'Orange'],#}
+{#      datasets: [{#}
+{#        label: '# of Votes',#}
+{#        data: [100, 90, 3, 5, 2, 3],#}
+{#        borderWidth: 1#}
+{#      }]#}
+{#    },#}
+{#    options: {#}
+{#      scales: {#}
+{#        y: {#}
+{#          beginAtZero: true#}
+{#        }#}
+{#      }#}
+{#    }#}
+{#  });#}
+{#</script>#}
